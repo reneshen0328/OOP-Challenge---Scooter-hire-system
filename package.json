@@ -1,0 +1,14 @@
+{
+  "name": "oop-challenge---scooter-hire-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scooter-system.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.5"
+  }
+}
