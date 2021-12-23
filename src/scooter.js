@@ -5,10 +5,10 @@ class Scooter {
         
 	}
 
-	rent(user) {
-        if((this.charged) && (this.station === user.location)){ 
+	rent(account) {
+        if((this.charged) && (this.station === account.location)){ 
             return 'Enjoy the ride!'
-		} else if((!this.charged) && (this.station === user.location)){
+		} else if((!this.charged) && (this.station === account.location)){
             return 'Scooter is not charged, please select another'
         }else {
 			return "Something went terribly wrong :("

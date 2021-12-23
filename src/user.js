@@ -14,7 +14,7 @@ class User {
 		if(this.checkStatus){
         this.money = this.money - 20;
 		this.scooter = scooter
-        return true
+        return `${this.name} has successfully rent the ${scooter}`
     }else{
         return "cannot rent the scooter for some reason..."
     }
@@ -22,16 +22,14 @@ class User {
 }
 
 class Account extends User{
-    constructor(name,dollars,location,accNumb){
-        super(name,dollars,location)
+    constructor(name,dollars,location,accNumb,checkStatus){
+        super(name,dollars,location,checkStatus)
         this.accNumb = accNumb
-        this.scooterUsed = []
     }
 
     hasCorrectAcc(accNumb){
         if((this.accNumb === accNumb) && ( this.money > 0 )){
-            // return `${this.name} has an accurate account, and can rent a scooter with it!`
-            return true
+            return `${this.name} has an accurate account, and can rent a scooter with it!`
         }else if( (this.accNumb === accNumb) && (this.money <= 0 )){
             return `${this.name} has an accurate account, but ${this.name} need more $$ to rent a scooter :()`
         }else{
@@ -40,7 +38,7 @@ class Account extends User{
     }
 
     assignScooterToUser(scooter){
-        if((this.hasCorrectAcc()) && ((scooter.rent()))){
+        if((this.hasCorrectAcc()) && ((scooter.rent(scooter.station)))){
             this.checkStatus = true
         }
     }
