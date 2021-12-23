@@ -1,20 +1,23 @@
 const Scooter = require("./scooter")
 
 class User {
-	constructor(name,dollars,location,accNumb){
+	constructor(name,dollars,location,accNumb,checkStatus){
 		this.name = name
 		this.money = dollars
 		this.scooter = {}
         this.location = location
         this.accNumb = accNumb
-     
+        this.checkStatus=checkStatus
 	}
 
 	rentScooter(scooter){
-		
+		if(this.checkStatus){
         this.money = this.money - 20;
 		this.scooter = scooter
         return true
+    }else{
+        return "cannot rent the scooter for some reason..."
+    }
 	}
 }
 
@@ -22,6 +25,7 @@ class Account extends User{
     constructor(name,dollars,location,accNumb){
         super(name,dollars,location)
         this.accNumb = accNumb
+        this.scooterUsed = []
     }
 
     hasCorrectAcc(accNumb){
@@ -34,6 +38,16 @@ class Account extends User{
             return "The account number does not match the user number, please try again!"
         }
     }
+
+    assignScooterToUser(scooter){
+        if((this.hasCorrectAcc()) && ((scooter.rent()))){
+            this.checkStatus = true
+        }
+    }
+
+    // calcUsedScooters(){
+    //     if(){}
+    // }
 }
 
 module.exports = {User,Account}

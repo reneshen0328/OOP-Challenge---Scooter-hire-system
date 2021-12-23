@@ -2,7 +2,7 @@ class Scooter {
 	constructor(station, charged){
 		this.station = station
 		this.charged = charged
-       
+        
 	}
 
 	rent(user) {
