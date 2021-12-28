@@ -17,7 +17,7 @@ describe('Scooter Object Methods', () => {
     test('charged scooter can be rented', () => {
 		const testScooter = new Scooter('Chicago', true);
         const testUser = new User("Pam",100,'Chicago',1234,true);
-		expect(testScooter.rent(testUser)).toBe('Enjoy the ride!');
+		expect(testScooter.rent(testUser)).toBe("Have a great ride!");
 	})
 
     test(`scooter cannot be rented until it's charged`, () => {

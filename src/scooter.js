@@ -1,3 +1,5 @@
+const Station = require("./station")
+
 class Scooter {
 	constructor(station, charged){
 		this.station = station
@@ -6,8 +8,9 @@ class Scooter {
 	}
 
 	rent(account) {
+		
         if((this.charged) && (this.station === account.location)){ 
-            return 'Enjoy the ride!'
+            return "Have a great ride!"
 		} else if((!this.charged) && (this.station === account.location)){
             return 'Scooter is not charged, please select another'
         }else {

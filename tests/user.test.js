@@ -1,5 +1,6 @@
 const {User,Account} = require('../src/user')
 const Scooter = require('../src/scooter')
+const Station = require("../src/station")
 
 describe('User Object', () => {
 
@@ -47,16 +48,18 @@ describe('User Object', () => {
     })
 
     // Testing Scenerio: user1 wants to rent scooter1 using account1
-    test("Scooter1 is assign to User1",()=>{
+    test("Scooter1 is assign to User1 by the app system",()=>{
         const testAccount1 = new Account("Michael",50,'Palo Alto',1133)
         const testScooter1 = new Scooter("Palo Alto",true,"Michael")
         const testUser1 = new User("Michael",50,'Palo Alto',1133)
+        const testStation1 = new Station("Palo Alto",5)
        
         // step1: If user1 has an accurate account (account1)
         expect(testAccount1.hasCorrectAcc(testUser1.accNumb)).toBe(`${testAccount1.name} has an accurate account, and can rent a scooter with it!`);
 
-        //step2: If scooter1 is available
-        expect(testScooter1 .rent(testAccount1)).toBe('Enjoy the ride!');
+        //step2: If station1 and scooter1 are both accurate and available
+        expect(testStation1.location === testScooter1.station).toBeTruthy()
+        expect((testStation1.hasScooter()) && (testScooter1 .rent(testAccount1))).toBe("Have a great ride!")
 		
         //step3: Assign scooter1 to user1/account1
         testAccount1.assignScooterToUser(testScooter1);
@@ -66,7 +69,9 @@ describe('User Object', () => {
         expect(testAccount1.rentScooter(testScooter1)).toBe(`${testAccount1.name} has successfully rent the ${testScooter1}`)
 
         //step5: Calculate how many scooters have successfully assigned to users
-        
+        expect(testStation1.calcAssignedScooters(testScooter1)).toBe(1)
 
+        //step6: Calculate how many scooters have left
+        expect((testStation1.rackAmount - testStation1.scooters.length)).toBe((testStation1.rackAmount-1))
     })
 })
