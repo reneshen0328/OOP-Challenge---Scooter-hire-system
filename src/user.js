@@ -38,14 +38,8 @@ class Account extends User{
     }
 
     assignScooterToUser(scooter){
-        if((this.hasCorrectAcc()) && ((scooter.rent(scooter.station)))){
-            this.checkStatus = true
-        }
+        return (this.hasCorrectAcc()) && ((scooter.rent(scooter.station)))?this.checkStatus = true:this.checkStatus = false;
     }
-
-    // calcUsedScooters(){
-    //     if(){}
-    // }
 }
 
 module.exports = {User,Account}

@@ -5,9 +5,9 @@ class Station{
         this.scooters = []
     }
 
-    hasScooter(){
-        return (Math.trunc(this.rackAmount > 0))? "Have a great ride!":"Please find scooters at other locations.";
-    }
+    hasScooter = () =>
+        {return (Math.trunc(this.rackAmount > 0))? "Have a great ride!":"Please find scooters at other locations.";}
+    
 
     calcAssignedScooters(scooter){
         this.scooters.push(scooter)
