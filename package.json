@@ -4,7 +4,8 @@
   "description": "",
   "main": "scooter-system.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:report": "jest --coverage=true"
   },
   "author": "",
   "license": "ISC",
